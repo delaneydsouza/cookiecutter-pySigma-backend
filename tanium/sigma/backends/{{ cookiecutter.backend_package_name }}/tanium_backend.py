@@ -3,22 +3,22 @@ from sigma.rule import SigmaRule
 from sigma.conversion.base import TextQueryBackend
 from sigma.conditions import ConditionItem, ConditionAND, ConditionOR, ConditionNOT
 from sigma.types import SigmaCompareExpression, SigmaRegularExpression, SigmaRegularExpressionFlag
-from sigma.pipelines.{{ cookiecutter.backend_package_name }} import # TODO: add pipeline imports or delete this line
+from sigma.pipelines.tanium_pipeline import # imported the tanium pipeline file - is this correct
 import sigma
 import re
 from typing import ClassVar, Dict, Tuple, Pattern, List, Any, Optional
 
-class {{ cookiecutter.backend_class_name }}(TextQueryBackend):
-    """{{ cookiecutter.target_name }} backend."""
+class tanium_backend(TextQueryBackend):
+    """tanium backend."""
     # TODO: change the token definitions according to the syntax. Delete these not supported by your backend.
     # See the pySigma documentation for further infromation:
     # https://sigmahq-pysigma.readthedocs.io/en/latest/Backends.html
 
     # Operator precedence: tuple of Condition{AND,OR,NOT} in order of precedence.
     # The backend generates grouping if required
-    name : ClassVar[str] = "{{ cookiecutter.target_name }} backend"
+    name : ClassVar[str] = "tanium backend"
     formats : Dict[str, str] = {
-        "default": "Plain {{ cookiecutter.target_name }} queries",
+        "default": "Plain tanium queries",
         {% if cookiecutter.additional_output_formats %}
         {% for format in cookiecutter.output_formats.split(",") %}
         "{{ format }}": "'{{ format }}' output format",
